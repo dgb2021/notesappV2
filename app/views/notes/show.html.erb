@@ -1,0 +1,43 @@
+<% if notice.present? %>
+  <div class="alert alert-success">
+    <%= notice %>
+  </div>
+<% end %>
+
+<div class="container" class="row">
+  <div class="col-md-6 col-lg-4 my-2">
+    <div class="card my-4">
+      <div class="card-body">
+        <%= render @note %>
+      </div>
+    </div>
+
+    <div class="my-3">
+      <%= link_to "Edit", edit_note_path(@note), class: "btn btn-primary me-2" %>
+      <%= link_to "Home", notes_path, class: "btn btn-primary me-2" %>
+      <%= button_to "Delete", @note, method: :delete, class: "btn btn-danger mt-2" %>
+    </div>
+
+    <p>
+      <strong>Word count:</strong>
+      <%= word_count(@note.body) %>
+    </p>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Word</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% word_count_statistics(@note.body).each do |word, count| %>
+          <tr>
+            <td><%= word %></td>
+            <td><%= count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div> 
+</div>

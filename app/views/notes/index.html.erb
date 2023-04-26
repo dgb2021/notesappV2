@@ -1,0 +1,26 @@
+<% if notice.present? %>
+  <div class="alert alert-success">
+    <%= notice %>
+  </div>
+<% end %>
+
+<div class="container">
+  <h1 class="my-4">Notes</h1>
+
+  <div class="row">
+    <% @notes.each do |note| %>
+      <div class="col-md-6 col-lg-4 my-2">
+        <div class="card">
+          <div class="card-body">
+            <%= render note %>
+            <p>
+              <%= link_to "Show this note", note, class: "btn btn-primary" %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to "New note", new_note_path, class: "btn btn-success my-3" %>
+</div>

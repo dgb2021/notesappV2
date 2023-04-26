@@ -1,0 +1,17 @@
+<div class="container" class="row">
+  <div class="col-md-6 col-lg-4 my-2">
+
+    <h1 class="my-4">Edit your note...</h1>
+
+    <div class="card">
+      <div class="card-body">
+        <%= render "form", note: @note %>
+      </div>
+    </div>
+
+    <div class="my-3">
+      <%= link_to "Show this note", @note, class: "btn btn-primary me-2" %>
+      <%= link_to "Back to notes", notes_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
