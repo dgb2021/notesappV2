@@ -3,8 +3,14 @@ class NotesController < ApplicationController
 
   # GET /notes or /notes.json
   def index
-    @notes = Note.all
+    if params[:search].present?
+      search = params[:search].downcase
+      @notes = Note.where("LOWER(title) LIKE ? OR LOWER(body) LIKE ?", "%#{search}%", "%#{search}%").limit(3)
+    else
+      @notes = Note.all
+    end
   end
+
 
   # GET /notes/1 or /notes/1.json
   def show
